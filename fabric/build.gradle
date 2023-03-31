@@ -16,7 +16,7 @@ modrinth {
     changelog = System.getenv('CHANGELOG')
     versionType = "beta"
     uploadFile = remapJar
-    gameVersions = ["1.19.2"]
+    gameVersions = ["1.18.2"]
     loaders = ["fabric"]
     dependencies {
         required.project "architectury-api"

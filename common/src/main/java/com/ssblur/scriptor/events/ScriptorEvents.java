@@ -17,7 +17,7 @@ public class ScriptorEvents {
   public static final ResourceLocation RETURN_TRACE_DATA = new ResourceLocation(ScriptorMod.MOD_ID, "return_touch_data");
 
   public static void register() {
-    ChatEvent.RECEIVED.register(new SpellChatEvents());
+    ChatEvent.SERVER.register(new SpellChatEvents());
     LootEvent.MODIFY_LOOT_TABLE.register(new AddLootEvent());
     LifecycleEvent.SERVER_LEVEL_LOAD.register(new PreloadDictionary());
     ReloadListenerRegistry.register(PackType.SERVER_DATA, TomeReloadListener.INSTANCE);

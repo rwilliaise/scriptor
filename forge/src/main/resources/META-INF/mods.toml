@@ -13,23 +13,23 @@ Knowledge is power!
 '''
 #logoFile = ""
 
-[[dependencies.examplemod]]
+[[dependencies.scriptor]]
 modId = "forge"
 mandatory = true
 versionRange = "[43,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.scriptor]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19.2,)"
+versionRange = "[1.18.2,)"
 ordering = "NONE"
 side = "BOTH"
 
-[[dependencies.examplemod]]
+[[dependencies.scriptor]]
 modId = "architectury"
 mandatory = true
-versionRange = "[6.2.43,)"
+versionRange = "[4.11.89,)"
 ordering = "AFTER"
 side = "BOTH"

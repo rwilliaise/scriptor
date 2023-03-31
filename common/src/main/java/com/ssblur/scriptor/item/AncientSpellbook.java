@@ -5,7 +5,10 @@ import com.ssblur.scriptor.helpers.DictionarySavedData;
 import com.ssblur.scriptor.helpers.LimitedBookSerializer;
 import com.ssblur.scriptor.helpers.TomeResource;
 import com.ssblur.scriptor.word.Spell;
+import net.minecraft.Util;
 import net.minecraft.network.chat.Component;
+import net.minecraft.network.chat.TextComponent;
+import net.minecraft.network.chat.TranslatableComponent;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
@@ -29,8 +32,8 @@ public class AncientSpellbook extends Item {
   @Override
   public void appendHoverText(ItemStack itemStack, @Nullable Level level, List<Component> list, TooltipFlag tooltipFlag) {
     super.appendHoverText(itemStack, level, list, tooltipFlag);
-    list.add(Component.translatable("extra.scriptor.tome_description"));
-    list.add(Component.translatable("extra.scriptor.tome_tier", tier));
+    list.add(new TranslatableComponent("extra.scriptor.tome_description"));
+    list.add(new TranslatableComponent("extra.scriptor.tome_tier", tier));
   }
 
   @Override
@@ -40,7 +43,7 @@ public class AncientSpellbook extends Item {
     if(!level.isClientSide) {
       ServerLevel server = (ServerLevel) level;
 
-      player.sendSystemMessage(Component.translatable("extra.scriptor.tome_use"));
+      player.sendMessage(new TranslatableComponent("extra.scriptor.tome_use"), Util.NIL_UUID);
       player.getCooldowns().addCooldown(this, 20);
 
       var resource = TomeReloadListener.INSTANCE.getRandomTome(tier);
@@ -48,7 +51,7 @@ public class AncientSpellbook extends Item {
       Spell spell = resource.getSpell();
       String sentence = DictionarySavedData.computeIfAbsent(server).generate(spell);
       player.setItemInHand(interactionHand, LimitedBookSerializer.createSpellbook(resource.getAuthor(), resource.getName(), sentence));
-      player.sendSystemMessage(Component.translatable("extra.scriptor.spell_get", resource.getName()));
+      player.sendMessage(new TranslatableComponent("extra.scriptor.spell_get", resource.getName()), Util.NIL_UUID);
       return InteractionResultHolder.consume(player.getItemInHand(interactionHand));
     }
 

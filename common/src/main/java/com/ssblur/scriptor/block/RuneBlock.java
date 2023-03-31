@@ -31,7 +31,7 @@ public class RuneBlock extends Block implements EntityBlock {
       Properties
         .of(Material.DECORATION)
         .instabreak()
-        .noLootTable()
+        .noDrops()
         .sound(SoundType.AMETHYST)
         .noCollission()
     );
@@ -55,9 +55,10 @@ public class RuneBlock extends Block implements EntityBlock {
     return RuneBlockEntity::tick;
   }
 
+
   @Nullable
   @Override
-  public <T extends BlockEntity> GameEventListener getListener(ServerLevel serverLevel, T blockEntity) {
-    return EntityBlock.super.getListener(serverLevel, blockEntity);
+  public <T extends BlockEntity> GameEventListener getListener(Level level, T blockEntity) {
+    return EntityBlock.super.getListener(level, blockEntity);
   }
 }
